@@ -12,11 +12,11 @@
   </head>
   <body>
     
-    <div class="container-fluid pt-5 text-center">
+    <div id="app" class="container-fluid pt-5 text-center">
       <div class="row">
-        <div class="col-2"></div>
-        <div class="col-8">
-          <div id="app" class="card-fluid mb-3" style="max-width: 540px;">
+        <div class="col-3"></div>
+        <div class="col-6">
+          <div class="card-fluid mb-3" style="max-width: 540px;">
             <div class="row g-0">
               <div class="col-md-6">
                 <img :src="image" class="img-fluid rounded-start" alt="...">
@@ -25,17 +25,26 @@
                 <div class="card-body">
                   <p class="card-title display-3">{{ product }}</p>
                   <div class="data">
-                    <p class="display-5"></p>
+                    <img class="option-img" src="assets/images/blue.png" alt=""><br>
+                    <img class="option-img" src="assets/images/green.png" alt="">
                     <p class="display-5"></p>
                   </div>
-                  <p class="card-text"><small class="text-muted">In stock</small></p>
-                  <p class="card-text"><small class="text-muted">Out of stock</small></p>
+                  <p v-if="availability" class="card-text"><small class="text-muted">In stock</small></p>
+                  <p v-else class="card-text"><small class="text-muted">Out of stock</small></p>
+                  <div>
+                    <button @click="item_no++" type="button" class="btn btn-outline-success mb-3">Add to cart</button>
+                  </div>
+                  <div>
+                    <button v-if="item_no >= 1" @click="item_no--" type="button" class="btn btn-outline-danger">Remove from cart</button>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-2"></div>
+        <div class="col-3">
+          <p>Cart( {{ item_no }} )</p>
+        </div>
       </div>
     </div>
 
