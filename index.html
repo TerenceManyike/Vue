@@ -24,9 +24,8 @@
               <div class="col-md-6">
                 <div class="card-body">
                   <p class="card-title display-3">{{ product }}</p>
-                  <div class="data">
-                    <img class="option-img" src="assets/images/blue.png" alt=""><br>
-                    <img class="option-img" src="assets/images/green.png" alt="">
+                  <div class="data" v-for="item in options">
+                    <img class="option-img" :src="item.image" :alt="item.alt" @mouseover="alterImage(item.image_url)" :key="options.colour"><br>
                     <p class="display-5"></p>
                   </div>
                   <p v-if="availability" class="card-text"><small class="text-muted">In stock</small></p>
